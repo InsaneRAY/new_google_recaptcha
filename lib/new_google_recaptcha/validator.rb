@@ -16,6 +16,8 @@ module NewGoogleRecaptcha
       http.use_ssl = true if uri.scheme == 'https'
       result = JSON.parse(http.request(Net::HTTP::Get.new(uri)).body)
 
+      Rails.logger.info "Recaptcha Verify Response: #{result.to_json}"
+
       @score = result['score'].to_f
 
       conditions = []
