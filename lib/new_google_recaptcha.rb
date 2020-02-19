@@ -58,4 +58,5 @@ module NewGoogleRecaptcha
 end
 
 require_relative "new_google_recaptcha/view_ext"
+require_relative "new_google_recaptcha/controller_ext"
 require_relative "new_google_recaptcha/validator"
