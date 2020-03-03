@@ -22,6 +22,7 @@ module NewGoogleRecaptcha
     def generate_recaptcha_callback
       javascript_tag %(
         function newGoogleRecaptchaCallback () {
+          if (!grecaptcha) return
           grecaptcha.ready(function () {
             var elements = document.querySelectorAll('[data-google-recaptcha-action]')
             Array.prototype.slice.call(elements).forEach(function (el) {
@@ -35,6 +36,7 @@ module NewGoogleRecaptcha
             })
           })
         }
+        setInterval(newGoogleRecaptchaCallback, 30000)
       )
     end
   end
